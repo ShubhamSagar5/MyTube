@@ -7,7 +7,7 @@ import Avatar from 'react-avatar';
 
 const Navbar = () => {
   return (
-    <div className='m-2'>
+    <div className='m-2 bg-white fixed w-[100vw] top-0'>
         <div className='p-2 flex '>
             <div className=' w-[30%] mt-2'>
                   <div className='flex items-center'>
@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className='w-[90%]'>
  <div className='flex '>
                 
-                    <input type="text" placeholder='Search..' className='w-[50%] ml-[70px] border border-black rounded-l-full px-5 py-2' />
+                    <input type="text" placeholder='Search..' className='w-[50%] ml-[70px] border border-black rounded-l-full px-5 py-[5px]' />
                 
                 <button className='flex  items-center cursor-pointer bg-gray-300 border border-black px-2 rounded-r-full'><CiSearch size={24}/>Search</button>
             </div>
