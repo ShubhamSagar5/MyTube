@@ -10,7 +10,7 @@ import {SidebarItem5} from '../constants/SidebarItem'
 
 const Sidebar = () => {
     return (
-        <div className="ml-3   fixed  p-1 mt-[75px] h-[calc(100vh-4.625rem)] overflow-y-scroll">
+        <div className="ml-3   fixed  p-1 mt-[75px] h-[calc(100vh-4.625rem)] overflow-y-scroll bg-white">
            
            {
             SidebarItem1?.map((item,index)=>{

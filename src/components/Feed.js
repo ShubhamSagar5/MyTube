@@ -1,9 +1,13 @@
 import React from 'react'
+import ButtonList from './ButtonList'
+import VideoContainer from './VideoContainer'
 
 const Feed = () => {
   return (
     <div className='mt-[75px]  h-[calc(100vh-4.625rem)] overflow-y-scroll no-scrollbar'>
-        <div>
+        <div className='m-2'>
+        <ButtonList/>
+        <VideoContainer/>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum tempora eaque eius quo laborum eveniet quibusdam. Ut voluptatibus architecto doloribus vero unde! Error, similique nemo illum voluptates quis molestias soluta?
         Perspiciatis aperiam, sed quisquam dolorem aut, quam eveniet animi, expedita quas porro voluptatem deserunt dolorum odit voluptate! Quia aliquid fugiat minus unde laboriosam atque? Vitae doloremque minus voluptates. Voluptatibus, esse.
         Iure adipisci veniam doloribus, dolore ab cumque, eaque labore assumenda necessitatibus quo modi. Animi commodi at dicta facere nesciunt, quidem odio magni corrupti vero quis adipisci soluta earum ut quasi.
