@@ -27,11 +27,34 @@ import { IoMdHelpCircle } from "react-icons/io";
 import { MdFeedback } from "react-icons/md";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdVideoLibrary } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
+import { MdOutlineSubscriptions } from "react-icons/md";
+import { LuUserSquare2 } from "react-icons/lu";
+import { GoHistory } from "react-icons/go";
+import { GoVideo } from "react-icons/go";
+import { RiThumbUpLine } from "react-icons/ri";
+import { LiaHtml5 } from "react-icons/lia";
+import { RiCss3Line } from "react-icons/ri";
+import { IoIosTrendingUp } from "react-icons/io";
+import { IoBagHandleOutline } from "react-icons/io5";
+import { IoMusicalNotesOutline } from "react-icons/io5";
+import { BiMoviePlay } from "react-icons/bi";
+import { IoGameControllerOutline } from "react-icons/io5";
+import { GiNewspaper } from "react-icons/gi";
+import { LiaBookReaderSolid } from "react-icons/lia";
+import { IoSettingsOutline } from "react-icons/io5";
+import { FaRegFlag } from "react-icons/fa";
+import { IoIosHelpCircleOutline } from "react-icons/io";
+import { MdOutlineFeedback } from "react-icons/md";
+
+
+
+
 
 
 export const SidebarItem1 =  [
     {
-        icon:<IoMdHome size={22}/>,
+        icon:<AiOutlineHome  size={22}/>,
         title:'Home'
     },
     {
@@ -39,7 +62,7 @@ export const SidebarItem1 =  [
         title:'Shorts'
     },
     {
-        icon:<MdSubscriptions size={22}/>,
+        icon:<MdOutlineSubscriptions size={22}/>,
         title:'Subscription'
     },
 
@@ -47,19 +70,19 @@ export const SidebarItem1 =  [
 
 export const SidebarItem2 = [
     {
-        icon:<BiSolidUserRectangle size={22} />,
+        icon:<LuUserSquare2 size={22} />,
         title:'Your Channel'
     },
     {
-        icon:<FaHistory size={22}/>,
+        icon:<GoHistory  size={22}/>,
         title:'Histoy'
     },
     {
-        icon:<MdVideoLibrary size={22}/>,
+        icon:<GoVideo size={22}/>,
         title:'Funny Video'
     },
     {
-        icon:<IoMdThumbsUp size={22}/>,
+        icon:<RiThumbUpLine size={22}/>,
         title:'Liked video'
     },
 ]
@@ -70,12 +93,12 @@ export const SidebarItem2 = [
 
 export const SidebarItem3 = [
     {
-        icon:<FaHtml5   size={22}/>,
+        icon:<LiaHtml5    size={22}/>,
         title:'HTML5'
     },
     
     {
-        icon:<TiCss3   size={22}/>,
+        icon:<RiCss3Line   size={22}/>,
         title:'CSS'
     },
     {
@@ -98,19 +121,19 @@ export const SidebarItem3 = [
 
 export const SidebarItem4 = [
     {
-        icon:<MdTrendingUp  size={22}/>,
+        icon:<IoIosTrendingUp  size={22}/>,
         title:'Trending'
     },
     {
-        icon:<MdShoppingBasket  size={22}/>,
+        icon:<IoBagHandleOutline   size={22}/>,
         title:'Shopping'
     },
     {
-        icon:<IoMusicalNotes  size={22}/>,
+        icon:<IoMusicalNotesOutline  size={22}/>,
         title:'Music'
     },
     {
-        icon:<MdMovie  size={22}/>,
+        icon:<BiMoviePlay   size={22}/>,
         title:'Movie'
     },
     
@@ -120,12 +143,12 @@ export const SidebarItem4 = [
     },
     
     {
-        icon:<IoGameController  size={22}/>,
+        icon:<IoGameControllerOutline  size={22}/>,
         title:'Game'
     },
     
     {
-        icon:<MdNewspaper  size={22}/>,
+        icon:<GiNewspaper  size={22}/>,
         title:'News'
     },
     
@@ -135,7 +158,7 @@ export const SidebarItem4 = [
     },
     
     {
-        icon:<FaBookOpenReader   size={22}/>,
+        icon:<LiaBookReaderSolid    size={22}/>,
         title:'Learning'
     },
     
@@ -148,19 +171,19 @@ export const SidebarItem4 = [
 
 export const SidebarItem5 = [
     {
-        icon:<IoMdSettings    size={22}/>,
+        icon:<IoSettingsOutline     size={22}/>,
         title:'Settings'
     },
     {
-        icon:<IoMdFlag   size={22}/>,
+        icon:<FaRegFlag    size={22}/>,
         title:'Report History '
     },
     {
-        icon:<IoMdHelpCircle  size={22}/>,
+        icon:<IoIosHelpCircleOutline  size={22}/>,
         title:'Help'
     },
     {
-        icon:<MdFeedback     size={22}/>,
+        icon:<MdOutlineFeedback     size={22}/>,
         title:'Send feedback'
     },
 ]

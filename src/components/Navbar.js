@@ -4,23 +4,37 @@ import { CiSearch } from "react-icons/ci";
 import { BsCameraReels } from "react-icons/bs";
 import { IoNotificationsOutline } from "react-icons/io5"
 import Avatar from 'react-avatar';
+import { useDispatch } from 'react-redux';
+import { toggleSidebar } from './utilis/appSlice';
 
 const Navbar = () => {
+  
+  const dispatch = useDispatch()
+  
+  const handleSidebartoggle = () => {
+    dispatch(toggleSidebar())
+  }
+  
+  
+  
   return (
     <div className='m-2 bg-white fixed w-[100vw] top-0'>
-        <div className='p-2 flex '>
+        <div className='p-2 flex  fixed top-0 justify-center items-center w-[100%] z-10 bg-white'>
             <div className=' w-[30%] mt-2'>
                   <div className='flex items-center'>
-            <GiHamburgerMenu size={28} className='cursor-pointer'/>
-            <img className='h-[28px] mx-3 cursor-pointer' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1024px-YouTube_Logo_2017.svg.png" alt="" />
+                  <div onClick={handleSidebartoggle} className='hover:bg-gray-400 p-2 rounded-full '>
+                                <GiHamburgerMenu size={26} className='cursor-pointer' />
+                  </div>
+
+            <img className='h-[25px] mx-3 cursor-pointer' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1024px-YouTube_Logo_2017.svg.png" alt="" />
             </div>
             </div>
           <div className='w-[90%]'>
  <div className='flex '>
                 
-                    <input type="text" placeholder='Search..' className='w-[50%] ml-[70px] border border-black rounded-l-full px-5 py-[5px]' />
+                    <input type="text" placeholder='Search..' className='w-[50%] ml-[70px] border border-black rounded-l-full px-5 py-[5px] outline-none' />
                 
-                <button className='flex  items-center cursor-pointer bg-gray-300 border border-black px-2 rounded-r-full'><CiSearch size={24}/>Search</button>
+                <button className='flex  items-center cursor-pointer bg-gray-300 border border-black px-5 rounded-r-full'><CiSearch size={24}/></button>
             </div>
           </div>
            
