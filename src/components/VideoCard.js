@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Avatar from 'react-avatar'
+import { YOUTUBE_API_KEY, formatNumber,getTimeSince } from '../constants/ConstantAPI'
+
+
 
 const VideoCard = ({data}) => {
   
+    const [ytIcon, setYtIcon] = useState("");
+
+    const getChannelProfile = async() => {
+        const item = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${data?.snippet?.channelId}&key=`+YOUTUBE_API_KEY)
+        const json = await item?.json()
+        setYtIcon(json?.items[0]?.snippet?.thumbnails?.high?.url);
+        // console.log(json)
+    }
+
+console.log(data)
+
+    useEffect(()=>{
+       
+        getChannelProfile()
+    
+    },[])
+
+
     return (
     <div className='mt-3'>
         <div>
@@ -10,13 +31,13 @@ const VideoCard = ({data}) => {
         </div>
         <div className='mt-2 flex'>
             <div>
-            <Avatar className=' cursor-pointer' src="https://www.aidemos.info/wp-content/uploads/2023/05/A_boy_simple_avatar_pixar_3d_rendering_Light_backgroun_3f9635f5-175c-4740-98c5-c53cd64885f8.webp" size="38" round={true} />
+            <Avatar className=' cursor-pointer' src={ytIcon} size="38" round={true} />
 
             </div>
             <div className='ml-2'>
                 <p className='font-semibold '>{data?.snippet?.title}</p>
-                <p className='text-sm'>{data?.snippet?.channelTitle}</p>
-                <p>{data?.statistics?.viewCount}</p>
+                <p className='text-sm '>{data?.snippet?.channelTitle}</p>
+                <p className='text-sm'>{formatNumber(data?.statistics?.viewCount)} views : <span>{getTimeSince(data?.snippet?.publishedAt)}</span></p>
             </div>
         </div>
     </div>
@@ -24,5 +45,7 @@ const VideoCard = ({data}) => {
 }
 
 export default VideoCard
+
+
 
 

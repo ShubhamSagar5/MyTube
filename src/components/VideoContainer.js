@@ -11,15 +11,15 @@ const VideoContainer = () => {
     const json = await data.json()
     setVideos(json.items)
   }
-  
   console.log(videos)
+  
 
   useEffect(()=>{
     getVideoList()
   },[])
   
   return (
-    <div className='ml-4 mt-3 grid grid-cols-4 gap-3 '>
+    <div className='ml-4 mt-3 grid md:grid-cols-4 gap-3 '>
       
       {
         videos?.map((item)=>{
