@@ -5,7 +5,8 @@ import { BsCameraReels } from "react-icons/bs";
 import { IoNotificationsOutline } from "react-icons/io5"
 import Avatar from 'react-avatar';
 import { useDispatch } from 'react-redux';
-import { toggleSidebar } from './utilis/appSlice';
+import { toggleSidebar } from '../utilis/appSlice';
+
 
 const Navbar = () => {
   
