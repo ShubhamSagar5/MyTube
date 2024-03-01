@@ -26,9 +26,3 @@ const VideoCard = ({data}) => {
 export default VideoCard
 
 
-const formatCash = Intl.NumberFormat('en-US', {
-    notation: "compact",
-    maximumFractionDigits: 1
-  }).format();
-
-  console.log(formatCash(data?.statistics?.viewCount))
