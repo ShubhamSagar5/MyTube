@@ -6,17 +6,21 @@ import { IoNotificationsOutline } from "react-icons/io5"
 import Avatar from 'react-avatar';
 import { useDispatch } from 'react-redux';
 import { toggleSidebar } from '../utilis/appSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = () => {
   
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   
   const handleSidebartoggle = () => {
     dispatch(toggleSidebar())
   }
   
-  
+  const handleLOGONavigate = () => {
+    navigate('/')
+  }
   
   return (
     <div className='m-2 bg-white fixed w-[100vw] top-0'>
@@ -27,7 +31,7 @@ const Navbar = () => {
                                 <GiHamburgerMenu size={26} className='cursor-pointer' />
                   </div>
 
-            <img className='h-[25px] mx-3 cursor-pointer' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1024px-YouTube_Logo_2017.svg.png" alt="" />
+            <img onClick={handleLOGONavigate} className='h-[25px] mx-3 cursor-pointer' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1024px-YouTube_Logo_2017.svg.png" alt="youtubelogo" />
             </div>
             </div>
           <div className='w-[90%]'>

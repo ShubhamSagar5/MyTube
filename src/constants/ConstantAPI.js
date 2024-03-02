@@ -53,3 +53,95 @@ const timeDifference = currentDate.getTime() - pastDate.getTime();
         return secondsDifference + (secondsDifference === 1 ? " second ago" : " seconds ago");
     }
 }
+
+
+var nameList = [
+    "Aarav",
+    "Vivaan",
+    "Aditya",
+    "Arjun",
+    "Ishaan",
+    "Reyansh",
+    "Kabir",
+    "Advik",
+    "Vihaan",
+    "Shaurya",
+    "Rudra",
+    "Aryan",
+    "Dhruv",
+    "Ayaan",
+    "Atharv",
+    "Aadi",
+    "Aaradhya",
+    "Ananya",
+    "Saanvi",
+    "Myra",
+    "Avni",
+    "Anika",
+    "Kiara",
+    "Anaya",
+    "Aanya",
+    "Aditi",
+    "Pari",
+    "Riya",
+    "Avisha",
+    "Tara",
+    "Aashi",
+    "Ishita",
+    "Aarohi",
+    "Anvi",
+  ];
+  
+  export const randomNameGenerator = ()=> {
+  return nameList[Math.floor(Math.random() * nameList.length)];
+      };
+      
+
+
+    export  function randomMessageGenerator() {
+        const comments = [
+            "Great video, informative!",
+            "Loved it, learned!",
+            "Short and sweet!",
+            "Helpful content, clear!",
+            "Awesome, changed mind!",
+            "Nice job, explained!",
+            "Super helpful, thanks!",
+            "Very informative, loved!",
+            "Interesting topic, engaging!",
+            "Amazing video, insightful!",
+            "Excellent job, continue!",
+            "Clear and concise!",
+            "Great content, follows!",
+            "Very helpful, thanks!",
+            "Informative video, fantastic!",
+            "Fantastic job, thanks!",
+            "Short and impactful!",
+            "Impressive work, thanks!",
+            "Awesome content, helpful!",
+            "Insightful, thank you!"
+        ];
+      
+        // Generate a random index
+        const randomIndex = Math.floor(Math.random() * comments.length);
+      
+        // Return a random comment
+        return comments[randomIndex];
+      }    
+      
+
+  
+  export const OFFSETCOUNT = 25
+
+
+
+ export  function generateRandomProfilePicUrl() {
+    const width = 200; // Specify the width of the image
+    const height = 200; // Specify the height of the image
+    const randomId = Math.floor(Math.random() * 1000); // Generate a random ID for the image
+    return `https://picsum.photos/${width}/${height}?random=${randomId}`;
+  }
+  
+  // Example usage
+  const randomProfilePicUrl = generateRandomProfilePicUrl();
+  
