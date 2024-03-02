@@ -1,30 +1,34 @@
 
-import { useSelector } from 'react-redux';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 import Feed from './components/Feed';
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+
+import Body from './components/Body';
+import WatchPage from './components/WatchPage';
 
 
 function App() {
  
-  const sidebarOpen = useSelector((store)=>store?.app?.sidebarOpen)
+  const appRouter = createBrowserRouter([
+    {
+      path:'/',
+      element:<Body/>,
+      children:[
+        {
+          path:'/',
+          element:<Feed/>
+        },
+        {
+          path:'/watch',
+          element:<WatchPage/>
+        }
+      ]
+    }
+  ])
  
   return (
-    <div className=" no-scrollbar">
-     <Navbar/>
-     <div className=' flex w-[100%]'>
-      {
-        sidebarOpen && <div className='w-[14%]'>  <Sidebar/>
-      </div>
-        }
-    
-      <div className={sidebarOpen ? 'w-[86%]' : 'w-[100%]'}>
-        <Feed/>
-      </div>
-
-      
-     </div>
+    <div>
+      <RouterProvider router={appRouter}/>
     </div>
   );
 }
