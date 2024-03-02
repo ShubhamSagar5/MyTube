@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { useSearchParams } from "react-router-dom";
-import { YOUTUBE_API_KEY } from "../constants/ConstantAPI";
+import { YOUTUBE_API_KEY, generateRandomProfilePicUrl } from "../constants/ConstantAPI";
 import Avatar from "react-avatar";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
@@ -28,7 +28,7 @@ const WatchPage = () => {
 
   const [videoDetails, setVideoDeatils] = useState("");
 
-  const [channelId, setChannelId] = useState("");
+  // const [channelId, setChannelId] = useState("");
 
 
   const getVideoDeatils = async () => {
@@ -37,7 +37,7 @@ const WatchPage = () => {
     );
     const json = await data.json();
     setVideoDeatils(json?.items[0]);
-    setChannelId(json?.items[0]?.snippet?.channelId)
+    // setChannelId(json?.items[0]?.snippet?.channelId)
   };
 
   const handleSendLiveMess = () => {
@@ -53,19 +53,19 @@ const WatchPage = () => {
     dispatch(toggleLiveChat())
   }
 
-  const [ytIcon, setYtIcon] = useState("");
+  // const [ytIcon, setYtIcon] = useState("");
 
-  const getChannelProfile = async() => {
-      const item = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=`+YOUTUBE_API_KEY)
-      const json = await item?.json()
-      setYtIcon(json?.items[0]?.snippet?.thumbnails?.high?.url);
-      // console.log(json)
-  }
+  // const getChannelProfile = async() => {
+  //     const item = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=`+YOUTUBE_API_KEY)
+  //     const json = await item?.json()
+  //     setYtIcon(json?.items[0]?.snippet?.thumbnails?.high?.url);
+  //     // console.log(json)
+  // }
 
   useEffect(() => {
     
     getVideoDeatils();
-    getChannelProfile()
+    // getChannelProfile()
   },[]);
 
   return (
@@ -84,14 +84,14 @@ const WatchPage = () => {
         <h1 className="p-1 font-bold text-lg mt-1">{videoDetails?.snippet?.title}</h1>
         <div className="flex justify-between items-center">
  <div className="flex items-center mt-2">
-           {/* {
+           {
              <Avatar
                   className="cursor-pointer "
-                  src={ytIcon}
+                  src={generateRandomProfilePicUrl()}
                   size="45"
                   round={true}
                 /> 
-           }  */}
+           } 
         <p className="font-semibold mx-3 text-lg">{videoDetails?.snippet?.channelTitle}</p>
 
         <div className="bg-black text-white px-3 py-[6px] rounded-full font-semibold cursor-pointer">Subscribe</div>

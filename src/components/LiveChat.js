@@ -33,7 +33,7 @@ const LiveChat = () => {
        {
         chatMess?.map((data,index)=>{
           return (
-            <Chat data={data}/>
+            <Chat key={index} data={data}/>
           )
         })
        }

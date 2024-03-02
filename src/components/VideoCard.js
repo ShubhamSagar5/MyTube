@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Avatar from 'react-avatar'
 import { YOUTUBE_API_KEY, formatNumber,getTimeSince } from '../constants/ConstantAPI'
+import useChannelThumbNail from '../utilis/useChannelTumbnail';
 
 
 
@@ -8,21 +9,27 @@ const VideoCard = ({data}) => {
   
     const [ytIcon, setYtIcon] = useState("");
 
-    const getChannelProfile = async() => {
-        const item = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${data?.snippet?.channelId}&key=`+YOUTUBE_API_KEY)
-        const json = await item?.json()
-        setYtIcon(json?.items[0]?.snippet?.thumbnails?.high?.url);
-        // console.log(json)
-    }
+    const channelId = data?.snippet?.channelId
 
-console.log(data)
+    const getChannelProfile = useChannelThumbNail(channelId)
 
-    useEffect(()=>{
+
+    // const getChannelProfile = async() => {
+    //     const item = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${data?.snippet?.channelId}&key=`+YOUTUBE_API_KEY)
+    //     const json = await item?.json()
+    //     setYtIcon(json?.items[0]?.snippet?.thumbnails?.high?.url);
+    //     // console.log(json)
+    // }
+
+// console.log(data)
+
+    // useEffect(()=>{
        
-        getChannelProfile()
+    //     getChannelProfile()
     
-    },[])
+    // },[])
 
+    console.log(getChannelProfile)
 
     return (
     <div className='mt-3'>
@@ -31,7 +38,7 @@ console.log(data)
         </div>
         <div className='mt-2 flex'>
             <div>
-            <Avatar className=' cursor-pointer' src={ytIcon} size="38" round={true} />
+            <Avatar className=' cursor-pointer' src={getChannelProfile} size="38" round={true} />
 
             </div>
             <div className='ml-2'>
