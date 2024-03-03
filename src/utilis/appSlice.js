@@ -7,7 +7,8 @@ const appSlice = createSlice({
     initialState:{
         sidebarOpen:true,
         mainVideo:[],
-        btnCategory:'All'
+        btnCategory:'All',
+        suggestionList:[]
     },
     reducers:{
         toggleSidebar:(state)=>{
@@ -19,11 +20,14 @@ const appSlice = createSlice({
         addBtnCategory:(state,action)=>{
             state.btnCategory = action.payload
         },
+        addSuggestionList:(state,action)=>{
+            state.suggestionList = action.payload
+        }
        
     }
 })
 
 
 
-export const {toggleSidebar,addMainVideo,addBtnCategory} = appSlice.actions
+export const {toggleSidebar,addMainVideo,addBtnCategory,addSuggestionList} = appSlice.actions
 export default appSlice.reducer

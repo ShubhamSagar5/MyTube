@@ -26,7 +26,7 @@ const ButtonList = () => {
       {
         btnList?.map((item,index)=>{
             return (
-                <button onClick={()=>handleBtnClickBgColor(item)} className={btnCategoryName === item ? 'bg-black text-white py-1 px-3 rounded-lg my-1 mx-3' : 'bg-gray-200 py-1 px-3 rounded-lg my-1 mx-3' }>{item}</button>
+                <button onClick={()=>handleBtnClickBgColor(item)} className={btnCategoryName === item ? 'bg-black text-white font-semibold py-1 px-3 rounded-lg my-1 mx-3' : 'bg-gray-200 py-1 px-3 font-semibold rounded-lg my-1 mx-3' }>{item}</button>
             )
         })
       }  

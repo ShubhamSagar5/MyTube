@@ -44,7 +44,7 @@ const VideoContainer = () => {
       {
         mainVideo?.map((item)=>{
           return (
-          <Link to={`/watch?v=${typeof item?.id === 'object' ? item?.id?.videoId : item?.id}`} key={item?.id}><VideoCard data={item}/></Link>  
+          <Link to={`/watch?v=${typeof item?.id === 'object' ? item?.id?.videoId : item?.id}`} key={typeof item?.id === 'object' ? item?.id?.videoId : item?.id}><VideoCard data={item}/></Link>  
           )
         })
       }

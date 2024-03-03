@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
 import { BsCameraReels } from "react-icons/bs";
 import { IoNotificationsOutline } from "react-icons/io5"
 import Avatar from 'react-avatar';
-import { useDispatch } from 'react-redux';
-import { toggleSidebar } from '../utilis/appSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addSuggestionList, toggleSidebar } from '../utilis/appSlice';
 import { useNavigate } from 'react-router-dom';
+import { SUGGESTION_API } from '../constants/ConstantAPI';
 
 
 const Navbar = () => {
@@ -14,6 +15,12 @@ const Navbar = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   
+  const suggestionList = useSelector((store)=>store?.app?.suggestionList)
+
+  const [searchText,setSearchText] = useState('')
+
+  
+
   const handleSidebartoggle = () => {
     dispatch(toggleSidebar())
   }
@@ -21,6 +28,27 @@ const Navbar = () => {
   const handleLOGONavigate = () => {
     navigate('/')
   }
+
+  const handleSuggestionAutoComplete = async() => {
+      const data = await fetch(SUGGESTION_API+searchText)
+      const json = await data.json()
+      console.log(json)
+      dispatch(addSuggestionList(json[1]))
+  }
+
+  useEffect(()=>{
+    const timer = setTimeout(()=>{
+      handleSuggestionAutoComplete()
+    },[200])
+
+
+    return () => {
+      clearTimeout(timer)
+    }
+
+   
+   
+  },[searchText])
   
   return (
     <div className='m-2 bg-white fixed w-[100vw] top-0'>
@@ -34,13 +62,31 @@ const Navbar = () => {
             <img onClick={handleLOGONavigate} className='h-[25px] mx-3 cursor-pointer' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1024px-YouTube_Logo_2017.svg.png" alt="youtubelogo" />
             </div>
             </div>
-          <div className='w-[90%]'>
+          <div className='w-[90%] '>
  <div className='flex '>
                 
-                    <input type="text" placeholder='Search..' className='w-[50%] ml-[70px] border border-black rounded-l-full px-5 py-[5px] outline-none' />
+                    <input type="text" placeholder='Search..' value={searchText} onChange={(e)=>setSearchText(e.target.value)} className='w-[50%] ml-[70px] font-semibold border border-black rounded-l-full px-5 py-[5px] outline-none' />
                 
                 <button className='flex  items-center cursor-pointer bg-gray-300 border border-black px-5 rounded-r-full'><CiSearch size={24}/></button>
+            
             </div>
+           {
+            (searchText && suggestionList) &&  <div className='absolute z-50 bg-white rounded-lg w-[31%] mt-2 ml-[80px]'>
+              <ul className='p-3'>
+              {
+                suggestionList?.map((listItem,index)=>{
+                  return (
+                    <li className='flex font-semibold py-2 px-1 rounded-lg cursor-pointer items-center hover:bg-gray-200'><CiSearch size={24}/><span className='mx-3 '>{listItem}</span></li>
+
+                  )
+                })
+              }
+                
+
+              </ul>
+            </div>
+           }
+           
           </div>
            
            <div className='w-[20%]'>
