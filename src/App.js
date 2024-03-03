@@ -5,6 +5,7 @@ import Feed from './components/Feed';
 
 import Body from './components/Body';
 import WatchPage from './components/WatchPage';
+import SearchContainer from './components/SearchContainer';
 
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
         {
           path:'/watch',
           element:<WatchPage/>
+        },
+        {
+          path:'/search/:searchQuery',
+          element:<SearchContainer/>
         }
       ]
     }

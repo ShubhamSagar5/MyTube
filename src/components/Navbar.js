@@ -6,7 +6,7 @@ import { IoNotificationsOutline } from "react-icons/io5"
 import Avatar from 'react-avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSuggestionList, toggleSidebar } from '../utilis/appSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SUGGESTION_API } from '../constants/ConstantAPI';
 
 
@@ -32,9 +32,17 @@ const Navbar = () => {
   const handleSuggestionAutoComplete = async() => {
       const data = await fetch(SUGGESTION_API+searchText)
       const json = await data.json()
-      console.log(json)
       dispatch(addSuggestionList(json[1]))
   }
+
+ const handleSearchBtnCLick = () => {
+  if(searchText){
+    navigate('/search/'+searchText)
+    setSearchText('')
+    dispatch(addSuggestionList(null))
+  }
+  
+ }
 
   useEffect(()=>{
     const timer = setTimeout(()=>{
@@ -67,7 +75,7 @@ const Navbar = () => {
                 
                     <input type="text" placeholder='Search..' value={searchText} onChange={(e)=>setSearchText(e.target.value)} className='w-[50%] ml-[70px] font-semibold border border-black rounded-l-full px-5 py-[5px] outline-none' />
                 
-                <button className='flex  items-center cursor-pointer bg-gray-300 border border-black px-5 rounded-r-full'><CiSearch size={24}/></button>
+                <button onClick={handleSearchBtnCLick} className='flex  items-center cursor-pointer bg-gray-300 border border-black px-5 rounded-r-full'><CiSearch size={24}/></button>
             
             </div>
            {
@@ -76,7 +84,7 @@ const Navbar = () => {
               {
                 suggestionList?.map((listItem,index)=>{
                   return (
-                    <li className='flex font-semibold py-2 px-1 rounded-lg cursor-pointer items-center hover:bg-gray-200'><CiSearch size={24}/><span className='mx-3 '>{listItem}</span></li>
+                   <li onClick={handleSearchBtnCLick} className='flex font-semibold py-2 px-1 rounded-lg cursor-pointer items-center hover:bg-gray-200'><CiSearch size={24}/><span className='mx-3 '>{listItem}</span></li>
 
                   )
                 })
