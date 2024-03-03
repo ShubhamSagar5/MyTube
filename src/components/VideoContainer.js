@@ -12,7 +12,6 @@ const VideoContainer = () => {
     const json = await data.json()
     setVideos(json.items)
   }
-  console.log(videos)
   
 
   useEffect(()=>{
@@ -24,7 +23,6 @@ const VideoContainer = () => {
       
       {
         videos?.map((item)=>{
-         console.log(item)
           return (
           <Link to={`/watch?v=${item.id}`} key={item.id}><VideoCard data={item}/></Link>  
           )

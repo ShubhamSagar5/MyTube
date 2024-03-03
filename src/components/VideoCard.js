@@ -29,7 +29,6 @@ const VideoCard = ({data}) => {
     
     // },[])
 
-    console.log(getChannelProfile)
 
     return (
     <div className='mt-3'>
