@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Avatar from 'react-avatar'
-import { YOUTUBE_API_KEY, formatNumber,getTimeSince } from '../constants/ConstantAPI'
+import { YOUTUBE_API_KEY, formatNumber,generateFiveDigitNumber,getTimeSince } from '../constants/ConstantAPI'
 import useChannelThumbNail from '../utilis/useChannelTumbnail';
 
 
@@ -43,7 +43,7 @@ const VideoCard = ({data}) => {
             <div className='ml-2'>
                 <p className='font-semibold '>{data?.snippet?.title}</p>
                 <p className='text-sm '>{data?.snippet?.channelTitle}</p>
-                <p className='text-sm'>{formatNumber(data?.statistics?.viewCount)} views : <span>{getTimeSince(data?.snippet?.publishedAt)}</span></p>
+                <p className='text-sm'>{formatNumber(data?.statistics?.viewCount ? data?.statistics?.viewCount : generateFiveDigitNumber() )} views : <span>{getTimeSince(data?.snippet?.publishedAt)}</span></p>
             </div>
         </div>
     </div>
@@ -55,3 +55,4 @@ export default VideoCard
 
 
 
+// generateFiveDigitNumber

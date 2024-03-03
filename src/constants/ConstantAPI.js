@@ -1,5 +1,5 @@
 
-export const YOUTUBE_API_KEY = 'AIzaSyA6e89GHZVUV3ydEywfHUjk80AmIUnbGsg'
+export const YOUTUBE_API_KEY = 'AIzaSyAxwqANxIvxGhrscBaK4nykR2FyiWv1Zkw'
 
 export const YOUTUBE_VIDEO_API = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key='
 
@@ -145,3 +145,8 @@ var nameList = [
   // Example usage
   const randomProfilePicUrl = generateRandomProfilePicUrl();
   
+
+export const  generateFiveDigitNumber= () => {
+    // Generate a random number between 10000 and 99999
+    return Math.floor(Math.random() * 90000) + 10000;
+}
