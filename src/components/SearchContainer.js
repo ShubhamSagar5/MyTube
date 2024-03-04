@@ -34,8 +34,8 @@ useEffect(()=>{
     return (
     <div className='mt-[90px] h-[calc(100vh-4.625rem)]'>
     
-    <div className={sideBarOpen?'ml-[78px]':'ml-[290px]'}>
-    <p className='font-semibold text-2xl mb-3'>Search For : {searchQuery}</p>
+    <div className={sideBarOpen?'md:ml-[78px]':'md:ml-[290px]'}>
+    <p className='font-semibold text-2xl mb-3 ml-2 md:ml-0'>Search For : {searchQuery}</p>
    
    {
     videos?.map((items)=>{

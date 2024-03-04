@@ -47,6 +47,8 @@ const WatchPage = () => {
       name:userName,
       message:liveMess
     }))
+
+    setLiveMess('')
   }
 
   const handleLiveChatShow = () => {
@@ -70,7 +72,7 @@ const WatchPage = () => {
 
   return (
     <div className="mt-[75px]  h-[calc(100vh-4.625rem)] overflow-y-scroll no-scrollbar  m-5 md:flex">
-      <div className="w-[70%]">
+      <div className="md:w-[70%]">
         <div className="h-[200px] md:h-[400px] lg:h-[400px] xl:h-[550px] ml-[-16px] lg:ml-0 mr-[-16px] lg:mr-0 rounded-lg">
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${videoId}`}
@@ -82,7 +84,7 @@ const WatchPage = () => {
           />
         </div>
         <h1 className="p-1 font-bold text-lg mt-1">{videoDetails?.snippet?.title}</h1>
-        <div className="flex justify-between items-center">
+        <div className="md:flex md:justify-between items-center">
  <div className="flex items-center mt-2">
            {
              <Avatar
@@ -92,23 +94,23 @@ const WatchPage = () => {
                   round={true}
                 /> 
            } 
-        <p className="font-semibold mx-3 text-lg">{videoDetails?.snippet?.channelTitle}</p>
+        <p className=" font-bold md:font-semibold md:mx-3 mx-5 text-lg">{videoDetails?.snippet?.channelTitle}</p>
 
         <div className="bg-black text-white px-3 py-[6px] rounded-full font-semibold cursor-pointer">Subscribe</div>
         </div>
 
 
-        <div className="flex items-center mt-2">
-        <div className="bg-gray-400 px-3 py-[6px] rounded-full font-semibold flex items-center mr-2"><span className="px-2 cursor-pointer"><AiOutlineLike size={22}/></span>|<span className="px-2 cursor-pointer"><AiOutlineDislike size={22}/></span></div>
-        <div className="bg-gray-400 px-3 py-[6px] rounded-full font-semibold  mr-2 flex cursor-pointer"><span className="mr-1"><RiShareForwardLine size={22}/></span>Share</div>
-        <div className="bg-gray-400 px-3 py-[6px] rounded-full font-semibold flex cursor-pointer"><span className="mr-1"><GoDownload size={22}/></span>Download</div>
+        <div className="flex items-center md:mt-2 mt-3 mb-4 md:mb-0">
+        <div className="bg-gray-400 px-2 md:px-3 py-[4px] md:py-[6px] rounded-full font-semibold flex items-center md:mr-2 mr-9"><span className="px-2 cursor-pointer"><AiOutlineLike size={22}/></span>|<span className="px-2 cursor-pointer"><AiOutlineDislike size={22}/></span></div>
+        <div className="bg-gray-400 px-2 md:px-3 py-[4px] md:py-[6px]  rounded-full font-semibold  md:mr-2 mr-9 flex cursor-pointer"><span className="mr-1"><RiShareForwardLine size={22}/></span>Share</div>
+        <div className="bg-gray-400 px-2 md:px-3 py-[4px] md:py-[6px]  rounded-full font-semibold flex cursor-pointer"><span className="mr-1"><GoDownload size={22}/></span>Download</div>
         </div>
         
         </div>
        
       </div>
-      <div className="w-[30%]  ">
-        <div className="mx-3 ">
+      <div className="md:w-[30%]  ">
+        <div className="md:mx-3 p-1">
           <p className="bg-gray-300 py-1 flex items-center rounded-lg px-[120px]" onClick={handleLiveChatShow}>{liveChatShow ? 'Hide Chat' : 'Live Chat'} <span className="pl-[30px]">{liveChatShow ? <FaAngleUp size={15} className=""/> : <FaAngleDown size={15}/> }</span>
           </p>
           { liveChatShow && <><div className=" flex flex-col-reverse border border-black rounded-t-lg p-1 border-b-0 overflow-y-scroll mt-2 w-full h-[460px]">
@@ -116,7 +118,7 @@ const WatchPage = () => {
           
           
           </div>
-          <div className=" flex items-center px-2 h-[50px] border border-black rounded-b-lg">
+          <div className=" flex items-center  px-2 h-[50px] border border-black rounded-b-lg">
           <input value={liveMess} onChange={(e)=> setLiveMess(e.target.value)} className="p-4 h-[20px] mb-[14px] w-[80%] border border-b-black outline-none" placeholder="Chat . . . . . " type="text" />
 
 <span className="ml-5"><BsSend size={25} onClick={handleSendLiveMess} className="cursor-pointer " /></span>

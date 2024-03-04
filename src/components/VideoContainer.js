@@ -39,7 +39,7 @@ const VideoContainer = () => {
   },[btnCategory])
   
   return (
-    <div className='ml-4 mt-3 grid md:grid-cols-4 gap-5  '>
+    <div className='ml-6 md:ml-4 mt-3 grid md:grid-cols-4 gap-5  '>
       
       {
         mainVideo?.map((item)=>{

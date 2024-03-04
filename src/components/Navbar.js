@@ -59,7 +59,7 @@ const Navbar = () => {
   },[searchText])
   
   return (
-    <div className='m-2 bg-white fixed w-[100vw] top-0'>
+    <div className='md:m-2 bg-white fixed w-[100vw] top-0'>
         <div className='p-2 flex  fixed top-0 justify-center items-center w-[100%] z-10 bg-white'>
             <div className=' w-[30%] mt-2'>
                   <div className='flex items-center'>
@@ -67,19 +67,19 @@ const Navbar = () => {
                                 <GiHamburgerMenu size={26} className='cursor-pointer' />
                   </div>
 
-            <img onClick={handleLOGONavigate} className='h-[25px] mx-3 cursor-pointer' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1024px-YouTube_Logo_2017.svg.png" alt="youtubelogo" />
+            <img onClick={handleLOGONavigate} className=' h-[25px]  md:h-[25px] mx-2 md:mx-3 cursor-pointer' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1024px-YouTube_Logo_2017.svg.png" alt="youtubelogo" />
             </div>
             </div>
-          <div className='w-[90%] '>
+          <div className='md:w-[90%] w-[70%] '>
  <div className='flex '>
                 
-                    <input type="text" placeholder='Search..' value={searchText} onChange={(e)=>setSearchText(e.target.value)} className='w-[50%] ml-[70px] font-semibold border border-black rounded-l-full px-5 py-[5px] outline-none' />
+                    <input type="text" placeholder='Search..' value={searchText} onChange={(e)=>setSearchText(e.target.value)} className='w-[50%] ml-[55px] md:ml-[70px] font-semibold border border-black rounded-l-full px-5 py-[5px] outline-none' />
                 
-                <button onClick={handleSearchBtnCLick} className='flex  items-center cursor-pointer bg-gray-300 border border-black px-5 rounded-r-full'><CiSearch size={24}/></button>
+                <button onClick={handleSearchBtnCLick} className='flex  items-center cursor-pointer bg-gray-300 border border-black md:px-5 px-2 rounded-r-full'><CiSearch size={24}/></button>
             
             </div>
            {
-            (searchText && suggestionList) &&  <div className='absolute z-50 bg-white rounded-lg w-[31%] mt-2 ml-[80px]'>
+            (searchText && suggestionList) &&  <div className='absolute z-50 bg-white rounded-lg md:w-[31%] mt-2 ml-[6px] md:ml-[80px]'>
               <ul className='p-3'>
               {
                 suggestionList?.map((listItem,index)=>{
@@ -97,11 +97,11 @@ const Navbar = () => {
            
           </div>
            
-           <div className='w-[20%]'>
+           <div className='md:w-[30%] '>
 <div className='flex items-center  justify-center'>
                     <BsCameraReels size={24} className='mx-3 cursor-pointer'/>
-                    <IoNotificationsOutline size={24} className='mx-3 cursor-pointer'/>
-                    <Avatar className='mx-3 cursor-pointer' src="https://www.aidemos.info/wp-content/uploads/2023/05/A_boy_simple_avatar_pixar_3d_rendering_Light_backgroun_3f9635f5-175c-4740-98c5-c53cd64885f8.webp" size="45" round={true} />
+                    <IoNotificationsOutline size={24} className='md:mx-3 cursor-pointer'/>
+                    <Avatar className='md:mx-3 cursor-pointer' src="https://www.aidemos.info/wp-content/uploads/2023/05/A_boy_simple_avatar_pixar_3d_rendering_Light_backgroun_3f9635f5-175c-4740-98c5-c53cd64885f8.webp" size="45" round={true} />
             </div>
            </div>
             

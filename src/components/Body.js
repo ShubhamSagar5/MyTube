@@ -14,7 +14,7 @@ const Body = () => {
         <Navbar/>
         <div className=' flex w-[100%]'>
          {
-           sidebarOpen && <div className='w-[14%]'>  <Sidebar/>
+           sidebarOpen && <div className='md:w-[14%] w-[10%]'>  <Sidebar/>
          </div>
            }
        

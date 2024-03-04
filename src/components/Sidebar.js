@@ -5,7 +5,6 @@ import {SidebarItem2} from '../constants/SidebarItem'
 import {SidebarItem3} from '../constants/SidebarItem'
 import {SidebarItem4} from '../constants/SidebarItem'
 import {SidebarItem5} from '../constants/SidebarItem'
-import { AiOutlineHome } from 'react-icons/ai'
 
 
 
@@ -35,7 +34,7 @@ const Sidebar = () => {
     
     
     return (
-        <div className="ml-3   fixed  p-1 mt-[75px] h-[calc(100vh-4.625rem)] overflow-y-scroll bg-white">
+        <div className="ml-3   fixed  p-1 mt-[73px] md:mt-[75px] h-[calc(100vh-4.625rem)] overflow-y-scroll bg-white">
             
            {
             SidebarItem1?.map((item,index)=>{
