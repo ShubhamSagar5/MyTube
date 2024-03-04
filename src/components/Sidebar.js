@@ -25,6 +25,12 @@ const Sidebar = () => {
 
        
     }
+
+    const handleFeedbackbtn = (title) => {
+        if(title === 'Report History' || title === 'Help' || title === 'Send feedback'){
+            window.open('https://www.linkedin.com/in/shubham-sagar-983a35210')
+        }
+    }
     
     
     
@@ -79,7 +85,7 @@ const Sidebar = () => {
            {
             SidebarItem5?.map((item,index)=>{
                 return (
-                    <div key={index} className="flex my-1 cursor-pointer hover:bg-gray-300 p-2 rounded-lg">
+                    <div key={index} onClick={()=>handleFeedbackbtn(item.title)} className="flex my-1 cursor-pointer hover:bg-gray-300 p-2 rounded-lg">
                     {item.icon}
             <p className="mx-4 ">{item.title}</p>
             </div>
