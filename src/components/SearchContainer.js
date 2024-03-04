@@ -29,7 +29,7 @@ const getVideoByQuery = async(query) => {
 
 useEffect(()=>{
     getVideoByQuery(searchQuery)
-},[])
+},[searchQuery])
 
     return (
     <div className='mt-[90px] h-[calc(100vh-4.625rem)]'>
