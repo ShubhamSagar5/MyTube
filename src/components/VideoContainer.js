@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMainVideo, removeMainVideo } from '../utilis/appSlice'
 import { computeHeadingLevel } from '@testing-library/react'
+import ShimmerUI from './ShimmerUI'
 
 const VideoContainer = () => {
   
 
-  const {mainVideo,btnCategory} = useSelector((store)=>store?.app) 
-
-  const [add,setAdd] = useState(0)
+  const {btnCategory} = useSelector((store)=>store?.app) 
+const mainVideo = []
+ 
 
   const dispatch = useDispatch()
 
@@ -38,16 +39,19 @@ const VideoContainer = () => {
     
   },[btnCategory])
   
-  return (
-    <div className='ml-6 md:ml-4 mt-3 grid md:grid-cols-4 gap-5  '>
-      
-      {
+  return mainVideo.length == 0 ? <ShimmerUI/> :  (
+    <div className=' md:ml-4 mt-3 grid md:grid-cols-4 gap-5  '>
+
+        {
         mainVideo?.map((item)=>{
           return (
           <Link to={`/watch?v=${typeof item?.id === 'object' ? item?.id?.videoId : item?.id}`} key={typeof item?.id === 'object' ? item?.id?.videoId : item?.id}><VideoCard data={item}/></Link>  
           )
         })
       }
+        
+      
+      
       
       
       

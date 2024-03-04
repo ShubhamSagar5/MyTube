@@ -33,7 +33,7 @@ const VideoCard = ({data}) => {
     return (
     <div className='mt-3'>
         <div>
-            <img className='rounded-lg' src={data?.snippet?.thumbnails?.medium?.url} alt="" />
+            <img className='rounded-lg w-full' src={data?.snippet?.thumbnails?.medium?.url} alt="" />
         </div>
         <div className='mt-2 flex'>
             <div>
@@ -41,7 +41,7 @@ const VideoCard = ({data}) => {
 
             </div>
             <div className='ml-2'>
-                <p className='font-semibold '>{data?.snippet?.title}</p>
+                <p className='font-bold '>{data?.snippet?.title}</p>
                 <p className='text-sm '>{data?.snippet?.channelTitle}</p>
                 <p className='text-sm'>{formatNumber(data?.statistics?.viewCount ? data?.statistics?.viewCount : generateFiveDigitNumber() )} views : <span>{getTimeSince(data?.snippet?.publishedAt)}</span></p>
             </div>

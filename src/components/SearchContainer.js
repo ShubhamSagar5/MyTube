@@ -5,12 +5,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { YOUTUBE_API_KEY } from '../constants/ConstantAPI'
 import { addSearchContainerVideo } from '../utilis/appSlice'
+import ShimmerUISuggestion from './ShimmerUISuggestion'
 
 const SearchContainer = () => {
   
    const sideBarOpen = useSelector((store)=>store?.app?.sidebarOpen)
   
-   const videos = useSelector((store)=>store?.app?.searchContainerVideo)
+//    const videos = useSelector((store)=>store?.app?.searchContainerVideo)
+
+    const videos = []
 
    const dispatch = useDispatch()
    const {searchQuery} = useParams()
@@ -31,7 +34,7 @@ useEffect(()=>{
     getVideoByQuery(searchQuery)
 },[searchQuery])
 
-    return (
+    return videos.length ==0  ? <ShimmerUISuggestion/> : (
     <div className='mt-[90px] h-[calc(100vh-4.625rem)]'>
     
     <div className={sideBarOpen?'md:ml-[78px]':'md:ml-[290px]'}>
@@ -40,9 +43,9 @@ useEffect(()=>{
    {
     videos?.map((items)=>{
         return (
-          <Link to={`/watch?v=${items?.id?.videoId}`} key={items?.id?.videoId}><div key={items?.id?.videoId} className='flex mb-5'>
+          <Link to={`/watch?v=${items?.id?.videoId}`} key={items?.id?.videoId}><div key={items?.id?.videoId} className='md:flex mb-5 '>
          <div>
-            <img className='rounded-lg' src={items?.snippet?.thumbnails?.medium?.url
+            <img className='rounded-lg w-full' src={items?.snippet?.thumbnails?.medium?.url
 } alt="" />
         </div>
         <div className='mx-3 w-[400px]'>
