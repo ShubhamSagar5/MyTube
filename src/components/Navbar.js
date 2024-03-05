@@ -35,7 +35,7 @@ const Navbar = () => {
       dispatch(addSuggestionList(json[1]))
   }
 
- const handleSearchBtnCLick = () => {
+ const handleSearchBtnCLick = (searchText) => {
   if(searchText){
     navigate('/search/'+searchText)
     setSearchText('')
@@ -75,7 +75,7 @@ const Navbar = () => {
                 
                     <input type="text" placeholder='Search..' value={searchText} onChange={(e)=>setSearchText(e.target.value)} className='w-[50%] ml-[55px] md:ml-[70px] font-semibold border border-black rounded-l-full px-5 py-[5px] outline-none' />
                 
-                <button onClick={handleSearchBtnCLick} className='flex  items-center cursor-pointer bg-gray-300 border border-black md:px-5 px-2 rounded-r-full'><CiSearch size={24}/></button>
+                <button onClick={()=>handleSearchBtnCLick(searchText)} className='flex  items-center cursor-pointer bg-gray-300 border border-black md:px-5 px-2 rounded-r-full'><CiSearch size={24}/></button>
             
             </div>
            {
@@ -84,7 +84,7 @@ const Navbar = () => {
               {
                 suggestionList?.map((listItem,index)=>{
                   return (
-                   <li onClick={handleSearchBtnCLick} className='flex font-semibold py-2 px-1 rounded-lg cursor-pointer items-center hover:bg-gray-200'><CiSearch size={24}/><span className='mx-3 '>{listItem}</span></li>
+                   <li onClick={()=>handleSearchBtnCLick(listItem)} className='flex font-semibold py-2 px-1 rounded-lg cursor-pointer items-center hover:bg-gray-200'><CiSearch size={24}/><span className='mx-3 '>{listItem}</span></li>
 
                   )
                 })

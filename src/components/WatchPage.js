@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { useSearchParams } from "react-router-dom";
-import { YOUTUBE_API_KEY, generateRandomProfilePicUrl } from "../constants/ConstantAPI";
+import { YOUTUBE_API_KEY, generateRandomProfilePicUrl, generateThreeDigitNumber, randomNameGenerator } from "../constants/ConstantAPI";
 import Avatar from "react-avatar";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
@@ -13,7 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addMessage, toggleLiveChat } from "../utilis/ChatSlice";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
-
+import { AiFillLike } from "react-icons/ai";
+import { AiFillDislike } from "react-icons/ai";
 
 
 const WatchPage = () => {
@@ -21,7 +22,13 @@ const WatchPage = () => {
   const videoId = searchParams.get("v");
 
   const [liveMess,setLiveMess] = useState('')
+
+  const [Subscribe,setSubscribe] = useState(false)
+
+  const [like,setLike] = useState(false)
+  const [dislike,setDislike] = useState(false)
   
+  const LikeCount = generateThreeDigitNumber()
   const dispatch = useDispatch()
 
   const liveChatShow = useSelector((store)=>store?.chat?.liveChatShow)
@@ -64,6 +71,25 @@ const WatchPage = () => {
   //     // console.log(json)
   // }
 
+
+  const handleSubscribe = () => {
+    setSubscribe(!Subscribe)
+  }
+
+  const handleLike = () => {
+    if(like == true || like == false) {
+      setDislike(false)
+    }
+    setLike(!like)
+  }
+
+  const handleDislike = () => {
+    if(like == true){
+      setLike(!like)
+    }
+    setDislike(!dislike)
+  }
+
   useEffect(() => {
     
     getVideoDeatils();
@@ -96,12 +122,12 @@ const WatchPage = () => {
            } 
         <p className=" font-bold md:font-semibold md:mx-3 mx-5 text-lg">{videoDetails?.snippet?.channelTitle}</p>
 
-        <div className="bg-black text-white px-3 py-[6px] rounded-full font-semibold cursor-pointer">Subscribe</div>
+        <div onClick={handleSubscribe} className={` ${Subscribe ? 'bg-gray-400 text-black': 'bg-black text-white'}   px-3 py-[6px] rounded-full font-semibold cursor-pointer`}>Subscribe</div>
         </div>
 
 
         <div className="flex items-center md:mt-2 mt-3 mb-4 md:mb-0">
-        <div className="bg-gray-400 px-2 md:px-3 py-[4px] md:py-[6px] rounded-full font-semibold flex items-center md:mr-2 mr-9"><span className="px-2 cursor-pointer"><AiOutlineLike size={22}/></span>|<span className="px-2 cursor-pointer"><AiOutlineDislike size={22}/></span></div>
+        <div className="bg-gray-400 px-2 md:px-3 py-[4px] md:py-[6px] rounded-full font-semibold flex items-center md:mr-2 mr-9"><span onClick={handleLike} className="px-2 cursor-pointer">{like ? <AiFillLike size={22}/> : <AiOutlineLike size={22}/>} </span>|<span onClick={handleDislike} className="px-2 cursor-pointer">{dislike ? <AiFillDislike size={22}/> : <AiOutlineDislike size={22}/>} </span></div>
         <div className="bg-gray-400 px-2 md:px-3 py-[4px] md:py-[6px]  rounded-full font-semibold  md:mr-2 mr-9 flex cursor-pointer"><span className="mr-1"><RiShareForwardLine size={22}/></span>Share</div>
         <div className="bg-gray-400 px-2 md:px-3 py-[4px] md:py-[6px]  rounded-full font-semibold flex cursor-pointer"><span className="mr-1"><GoDownload size={22}/></span>Download</div>
         </div>

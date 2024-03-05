@@ -11,9 +11,9 @@ const SearchContainer = () => {
   
    const sideBarOpen = useSelector((store)=>store?.app?.sidebarOpen)
   
-//    const videos = useSelector((store)=>store?.app?.searchContainerVideo)
+   const videos = useSelector((store)=>store?.app?.searchContainerVideo)
 
-    const videos = []
+    
 
    const dispatch = useDispatch()
    const {searchQuery} = useParams()

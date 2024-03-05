@@ -10,8 +10,8 @@ import ShimmerUI from './ShimmerUI'
 const VideoContainer = () => {
   
 
-  const {btnCategory} = useSelector((store)=>store?.app) 
-const mainVideo = []
+  const {mainVideo,btnCategory} = useSelector((store)=>store?.app) 
+
  
 
   const dispatch = useDispatch()
