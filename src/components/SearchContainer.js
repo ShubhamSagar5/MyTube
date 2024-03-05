@@ -13,11 +13,12 @@ const SearchContainer = () => {
   
    const videos = useSelector((store)=>store?.app?.searchContainerVideo)
 
+   const lightMode = useSelector((store)=>store?.app?.lightMode)
     
 
    const dispatch = useDispatch()
    const {searchQuery} = useParams()
-   console.log(searchQuery)
+   
 
 
 
@@ -25,7 +26,7 @@ const SearchContainer = () => {
 const getVideoByQuery = async(query) => { 
     const data = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&type=video&key=${YOUTUBE_API_KEY}`)
     const json = await data.json()
-    console.log(json?.items)
+
     dispatch(addSearchContainerVideo(json?.items))
 
 }
@@ -35,10 +36,10 @@ useEffect(()=>{
 },[searchQuery])
 
     return videos?.length ==0  ? <ShimmerUISuggestion/> : (
-    <div className='mt-[90px] h-[calc(100vh-4.625rem)]'>
+    <div className={`${lightMode ? 'mt-[90px] bg-white text-black':'mt-[90px]  bg-black text-white'}`}>
     
     <div className={sideBarOpen?'md:ml-[78px]':'md:ml-[290px]'}>
-    <p className='font-semibold text-2xl mb-3 ml-2 md:ml-0'>Search For : {searchQuery}</p>
+    <p className='font-semibold text-2xl mb-3 ml-2 md:ml-0'>Search Results : {searchQuery}</p>
    
    {
     videos?.map((items)=>{

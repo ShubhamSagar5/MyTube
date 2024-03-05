@@ -8,7 +8,7 @@ const Body = () => {
   
     const sidebarOpen = useSelector((store)=>store?.app?.sidebarOpen)
 
-  
+    
     return (
         <div className=" no-scrollbar">
         <Navbar/>

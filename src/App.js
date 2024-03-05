@@ -6,6 +6,7 @@ import Feed from './components/Feed';
 import Body from './components/Body';
 import WatchPage from './components/WatchPage';
 import SearchContainer from './components/SearchContainer';
+import { useSelector } from 'react-redux';
 
 
 function App() {
@@ -31,8 +32,11 @@ function App() {
     }
   ])
  
+
+  const lightMode = useSelector((store)=>store?.app?.lightMode)
+
   return (
-    <div>
+    <div className={`${lightMode ? '':'bg-black'}`}>
       <RouterProvider router={appRouter}/>
     </div>
   );

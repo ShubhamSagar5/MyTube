@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Avatar from 'react-avatar'
 import { YOUTUBE_API_KEY, formatNumber,generateFiveDigitNumber,getTimeSince } from '../constants/ConstantAPI'
 import useChannelThumbNail from '../utilis/useChannelTumbnail';
+import { useSelector } from 'react-redux';
 
 
 
@@ -13,6 +14,7 @@ const VideoCard = ({data}) => {
 
     const getChannelProfile = useChannelThumbNail(channelId)
 
+    const lightMode = useSelector((store)=>store?.app?.lightMode)
 
     // const getChannelProfile = async() => {
     //     const item = await fetch(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${data?.snippet?.channelId}&key=`+YOUTUBE_API_KEY)
@@ -40,10 +42,10 @@ const VideoCard = ({data}) => {
             <Avatar className=' cursor-pointer' src={getChannelProfile} size="38" round={true} />
 
             </div>
-            <div className='ml-2'>
+            <div className={`${lightMode ? 'text-black':'text-white'}  'ml-2'`}>
                 <p className='font-bold '>{data?.snippet?.title}</p>
-                <p className='text-sm '>{data?.snippet?.channelTitle}</p>
-                <p className='text-sm'>{formatNumber(data?.statistics?.viewCount ? data?.statistics?.viewCount : generateFiveDigitNumber() )} views : <span>{getTimeSince(data?.snippet?.publishedAt)}</span></p>
+                <p className='text-sm font-semibold '>{data?.snippet?.channelTitle}</p>
+                <p className='text-sm font-semibold'>{formatNumber(data?.statistics?.viewCount ? data?.statistics?.viewCount : generateFiveDigitNumber() )} views : <span>{getTimeSince(data?.snippet?.publishedAt)}</span></p>
             </div>
         </div>
     </div>

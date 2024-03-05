@@ -48,17 +48,28 @@ const Sidebar = () => {
     
     
     return (
-        <div className="ml-3 fixed  p-1 mt-[69px] md:mt-[75px] h-[calc(100vh-4.625rem)] overflow-y-scroll bg-white">
+        <div className={`ml-3 fixed  p-1 mt-[69px] md:mt-[75px] h-[calc(100vh-4.625rem)] overflow-y-scroll ${lightMode ? 'bg-white text-black':'bg-black text-white' } `}>
             
-            <div onClick={handleLightMode} className="flex my-1  hover:bg-gray-300 p-2 rounded-lg cursor-pointer">
+            {/* <div onClick={handleLightMode} className={`flex my-1  ${lightMode ? 'hover:bg-gray-300':'hover:bg-[#343434]'} p-2 rounded-lg cursor-pointer`}>
                    {lightMode ? <MdDarkMode size={22}/>:<MdOutlineLightMode size={22}/>  }
             <p  className="mx-4 ">{lightMode ? 'Dark Mode':'Light Mode' }</p>
-            </div>
+            </div> */}
+
+            <div
+      className={`w-16 border border-black ml-3 mb-2 py-[1px] h-7 relative rounded-full cursor-pointer ${lightMode ? 'bg-black' : 'bg-[#343434]'}`}
+      onClick={handleLightMode}
+    >
+      <div
+        className={`w-6 h-6 rounded-full bg-white shadow-md transform transition-transform duration-300 ${lightMode ? '' : 'translate-x-[35px]'}`}
+      ></div>
+    </div>
+
+
 
            {
             SidebarItem1?.map((item,index)=>{
                 return (
-                    <div  key={index} onClick={()=>handleFistItem(item.title)}  className="flex my-1  hover:bg-gray-300 p-2 rounded-lg cursor-pointer">
+                    <div  key={index} onClick={()=>handleFistItem(item.title)}  className={`flex my-1 ${lightMode ? 'hover:bg-gray-300':'hover:bg-[#343434]'}   p-2 rounded-lg cursor-pointer`}>
                     {item.icon}
             <p  className="mx-4 ">{item.title}</p>
             </div>
@@ -69,7 +80,7 @@ const Sidebar = () => {
            {
             SidebarItem2?.map((item,index)=>{
                 return (
-                    <div key={index} onClick={()=>handleFistItem(item.title)} className="flex my-1 cursor-pointer hover:bg-gray-300 p-2 rounded-lg">
+                    <div key={index} onClick={()=>handleFistItem(item.title)} className={`flex my-1 cursor-pointer ${lightMode ? 'hover:bg-gray-300':'hover:bg-[#343434]'} p-2 rounded-lg`}>
                     {item.icon}
             <p  className="mx-4 ">{item.title}</p>
             </div>
@@ -80,7 +91,7 @@ const Sidebar = () => {
            {
             SidebarItem3?.map((item,index)=>{
                 return (
-                    <div key={index} onClick={()=>handleFistItem(item.title)}  className="flex my-1 cursor-pointer hover:bg-gray-300 p-2 rounded-lg">
+                    <div key={index} onClick={()=>handleFistItem(item.title)}   className={`flex my-1 cursor-pointer ${lightMode ? 'hover:bg-gray-300':'hover:bg-[#343434]'} p-2 rounded-lg`}>
                     {item.icon}
             <p className="mx-4 ">{item.title}</p>
             </div>
@@ -91,7 +102,7 @@ const Sidebar = () => {
            {
             SidebarItem4?.map((item,index)=>{
                 return (
-                    <div key={index} onClick={()=>handleFistItem(item.title)} className="flex my-1 cursor-pointer hover:bg-gray-300 p-2 rounded-lg">
+                    <div key={index} onClick={()=>handleFistItem(item.title)}  className={`flex my-1 cursor-pointer ${lightMode ? 'hover:bg-gray-300':'hover:bg-[#343434]'} p-2 rounded-lg`}>
                     {item.icon}
             <p  className="mx-4 ">{item.title}</p>
             </div>
@@ -103,7 +114,7 @@ const Sidebar = () => {
            {
             SidebarItem5?.map((item,index)=>{
                 return (
-                    <div key={index} onClick={()=>handleFeedbackbtn(item.title)} className="flex my-1 cursor-pointer hover:bg-gray-300 p-2 rounded-lg">
+                    <div key={index} onClick={()=>handleFeedbackbtn(item.title)}  className={`flex my-1 cursor-pointer ${lightMode ? 'hover:bg-gray-300':'hover:bg-[#343434]'} p-2 rounded-lg`}>
                     {item.icon}
             <p className="mx-4 ">{item.title}</p>
             </div>
