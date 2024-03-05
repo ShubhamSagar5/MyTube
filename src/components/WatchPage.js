@@ -122,7 +122,7 @@ const WatchPage = () => {
            } 
         <p className=" font-bold md:font-semibold md:mx-3 mx-5 text-lg">{videoDetails?.snippet?.channelTitle}</p>
 
-        <div onClick={handleSubscribe} className={` ${Subscribe ? 'bg-gray-400 text-black': 'bg-black text-white'}   px-3 py-[6px] rounded-full font-semibold cursor-pointer`}>Subscribe</div>
+        <div onClick={handleSubscribe} className={` ${Subscribe ? 'bg-gray-400 text-black': 'bg-black text-white'}   px-3 py-[6px] rounded-full font-semibold cursor-pointer`}>{Subscribe ? 'UnSubscribe':'Subscribe'}</div>
         </div>
 
 
@@ -137,7 +137,7 @@ const WatchPage = () => {
       </div>
       <div className="md:w-[30%]  ">
         <div className="md:mx-3 p-1">
-          <p className="bg-gray-300 py-1 flex items-center rounded-lg px-[120px]" onClick={handleLiveChatShow}>{liveChatShow ? 'Hide Chat' : 'Live Chat'} <span className="pl-[30px]">{liveChatShow ? <FaAngleUp size={15} className=""/> : <FaAngleDown size={15}/> }</span>
+          <p className="bg-gray-300 py-1 flex items-center rounded-lg px-[120px]" onClick={handleLiveChatShow}>{liveChatShow ? 'HideChat' : 'LiveChat'} <span className="pl-[30px]">{liveChatShow ? <FaAngleUp size={15} className=""/> : <FaAngleDown size={15}/> }</span>
           </p>
           { liveChatShow && <><div className=" flex flex-col-reverse border border-black rounded-t-lg p-1 border-b-0 overflow-y-scroll mt-2 w-full h-[460px]">
           <LiveChat/>

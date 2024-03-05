@@ -39,7 +39,7 @@ const VideoContainer = () => {
     
   },[btnCategory])
   
-  return mainVideo.length == 0 ? <ShimmerUI/> :  (
+  return mainVideo?.length == 0 ? <ShimmerUI/> :  (
     <div className=' md:ml-4 mt-3 grid md:grid-cols-4 gap-5  '>
 
         {

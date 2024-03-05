@@ -34,7 +34,7 @@ useEffect(()=>{
     getVideoByQuery(searchQuery)
 },[searchQuery])
 
-    return videos.length ==0  ? <ShimmerUISuggestion/> : (
+    return videos?.length ==0  ? <ShimmerUISuggestion/> : (
     <div className='mt-[90px] h-[calc(100vh-4.625rem)]'>
     
     <div className={sideBarOpen?'md:ml-[78px]':'md:ml-[290px]'}>

@@ -9,7 +9,8 @@ const appSlice = createSlice({
         mainVideo:[],
         btnCategory:'All',
         suggestionList:[],
-        searchContainerVideo:[]
+        searchContainerVideo:[],
+        lightMode:true
     },
     reducers:{
         toggleSidebar:(state)=>{
@@ -26,6 +27,9 @@ const appSlice = createSlice({
         },
         addSearchContainerVideo:(state,action)=>{
             state.searchContainerVideo = action.payload
+        },
+        setLigthMode:(state)=>{
+            state.lightMode = !state.lightMode
         }
        
     }
@@ -33,5 +37,5 @@ const appSlice = createSlice({
 
 
 
-export const {toggleSidebar,addMainVideo,addBtnCategory,addSuggestionList,addSearchContainerVideo} = appSlice.actions
+export const {toggleSidebar,addMainVideo,addBtnCategory,addSuggestionList,addSearchContainerVideo,setLigthMode} = appSlice.actions
 export default appSlice.reducer

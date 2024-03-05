@@ -5,6 +5,11 @@ import {SidebarItem2} from '../constants/SidebarItem'
 import {SidebarItem3} from '../constants/SidebarItem'
 import {SidebarItem4} from '../constants/SidebarItem'
 import {SidebarItem5} from '../constants/SidebarItem'
+import { useState } from 'react'
+import { MdDarkMode } from "react-icons/md";
+import { MdOutlineLightMode } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux'
+import { setLigthMode } from '../utilis/appSlice'
 
 
 
@@ -12,6 +17,11 @@ import {SidebarItem5} from '../constants/SidebarItem'
 const Sidebar = () => {
     
     const navigate = useNavigate()
+
+
+    const lightMode = useSelector((store)=>store?.app?.lightMode)
+
+    const dispatch = useDispatch()
 
     const handleFistItem = (title) => {
         if(title === 'Home'){
@@ -30,12 +40,21 @@ const Sidebar = () => {
             window.open('https://www.linkedin.com/in/shubham-sagar-983a35210')
         }
     }
+
+    const handleLightMode = () =>{
+        dispatch(setLigthMode())
+    }
     
     
     
     return (
-        <div className="ml-3   fixed  p-1 mt-[73px] md:mt-[75px] h-[calc(100vh-4.625rem)] overflow-y-scroll bg-white">
+        <div className="ml-3 fixed  p-1 mt-[69px] md:mt-[75px] h-[calc(100vh-4.625rem)] overflow-y-scroll bg-white">
             
+            <div onClick={handleLightMode} className="flex my-1  hover:bg-gray-300 p-2 rounded-lg cursor-pointer">
+                   {lightMode ? <MdDarkMode size={22}/>:<MdOutlineLightMode size={22}/>  }
+            <p  className="mx-4 ">{lightMode ? 'Dark Mode':'Light Mode' }</p>
+            </div>
+
            {
             SidebarItem1?.map((item,index)=>{
                 return (
