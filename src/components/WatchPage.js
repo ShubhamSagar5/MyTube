@@ -22,6 +22,7 @@ const WatchPage = () => {
   const videoId = searchParams.get("v");
 
   const [liveMess,setLiveMess] = useState('')
+  const [userName,setUserName] = useState('')
 
   const lightMode = useSelector((store)=>store?.app?.lightMode)
 
@@ -50,13 +51,17 @@ const WatchPage = () => {
   };
 
   const handleSendLiveMess = () => {
-    const userName = prompt('Enter Your Name')
-    dispatch(addMessage({
-      profileURL:'https://www.aidemos.info/wp-content/uploads/2023/05/A_boy_simple_avatar_pixar_3d_rendering_Light_backgroun_3f9635f5-175c-4740-98c5-c53cd64885f8.webp',
-      name:userName,
-      message:liveMess
-    }))
-
+    if(!userName == '' && !liveMess == ''){
+      dispatch(addMessage({
+        profileURL:'https://www.aidemos.info/wp-content/uploads/2023/05/A_boy_simple_avatar_pixar_3d_rendering_Light_backgroun_3f9635f5-175c-4740-98c5-c53cd64885f8.webp',
+        name:userName,
+        message:liveMess
+      }))
+    }else{
+      alert('Both Filed Required . .! ! ')
+    }
+  
+    setUserName('')
     setLiveMess('')
   }
 
@@ -124,13 +129,14 @@ const WatchPage = () => {
            } 
         <p className=" font-bold md:font-semibold md:mx-3 mx-5 text-lg">{videoDetails?.snippet?.channelTitle}</p>
 
-        <div onClick={handleSubscribe} className={` ${Subscribe ? 'bg-gray-400 text-black': 'bg-[#343434] text-white'}   px-3 py-[6px] rounded-full font-semibold cursor-pointer`}>{Subscribe ? 'UnSubscribe':'Subscribe'}</div>
         </div>
 
 
-        <div className="flex items-center md:mt-2 mt-3 mb-4 md:mb-0">
-        <div className="bg-[#343434] text-white px-2 md:px-3 py-[4px] md:py-[6px] rounded-full font-semibold flex items-center md:mr-2 mr-9"><span onClick={handleLike} className="px-2 cursor-pointer">{like ? <AiFillLike size={22}/> : <AiOutlineLike size={22}/>} </span>|<span onClick={handleDislike} className="px-2 cursor-pointer">{dislike ? <AiFillDislike size={22}/> : <AiOutlineDislike size={22}/>} </span></div>
-        <div className="bg-[#343434] text-white px-2 md:px-3 py-[4px] md:py-[6px]  rounded-full font-semibold  md:mr-2 mr-9 flex cursor-pointer"><span className="mr-1"><RiShareForwardLine size={22}/></span>Share</div>
+        <div className="flex overflow-y-scroll no-scrollbar items-center md:mt-2 mt-3 mb-4 md:mb-0">
+        <div onClick={handleSubscribe} className={` ${Subscribe ? 'bg-gray-400 text-black': 'bg-[#343434] text-white'}  mr-1 px-3 py-[6px] rounded-full font-semibold cursor-pointer`}>{Subscribe ? 'UnSubscribe':'Subscribe'}</div>
+
+        <div className="bg-[#343434] text-white px-2 md:px-3 py-[4px] md:py-[6px] rounded-full font-semibold flex items-center md:mr-2 mr-1"><span onClick={handleLike} className="px-2 cursor-pointer">{like ? <AiFillLike size={22}/> : <AiOutlineLike size={22}/>} </span>|<span onClick={handleDislike} className="px-2 cursor-pointer">{dislike ? <AiFillDislike size={22}/> : <AiOutlineDislike size={22}/>} </span></div>
+        <div className="bg-[#343434] text-white px-2 md:px-3 py-[4px] md:py-[6px]  rounded-full font-semibold  md:mr-2 mr-1 flex cursor-pointer"><span className="mr-1"><RiShareForwardLine size={22}/></span>Share</div>
         <div className="bg-[#343434] text-white px-2 md:px-3 py-[4px] md:py-[6px]  rounded-full font-semibold flex cursor-pointer"><span className="mr-1"><GoDownload size={22}/></span>Download</div>
         </div>
         
@@ -146,10 +152,14 @@ const WatchPage = () => {
           
           
           </div>
-          <div className=" flex items-center  px-2 h-[50px] border border-[#343434] rounded-b-lg">
-          <input value={liveMess} onChange={(e)=> setLiveMess(e.target.value)} className={`${lightMode ? 'bg-white border border-b-[#343434] text-black':'bg-black outline-none text-white'} " p-4 h-[20px] mb-[12px] w-[80%] outline-none "`} placeholder="Type Comment . . . . . . . . . . . . ." type="text" />
+          <div className=" flex items-center  px-2 h-[70px] border border-[#343434] rounded-b-lg">
+           <div className="flex flex-col">
+                      <input value={userName} onChange={(e)=> setUserName(e.target.value)} className={`${lightMode ? 'bg-white border  text-black':'bg-black border border-b-white border-y-black border-x-black outline-none text-white'} " py-2  mt-1 h-[25px] mb-[2px] w-[100%] outline-none "`} placeholder="Enter Your Name . . . . . . . . . . ." type="text" />
+                      <input value={liveMess} onChange={(e)=> setLiveMess(e.target.value)} className={`${lightMode ? 'bg-white border  text-black':'bg-black outline-none text-white'} " py-2 h-[25px] mt-1   w-[100%] outline-none "`} placeholder="Type Comment . . . . . . . . . . . . ." type="text" />
 
-<span className="ml-5"><BsSend size={25} onClick={handleSendLiveMess} className="cursor-pointer " /></span>
+           </div>
+
+<span className="ml-[100px]"><BsSend size={25} onClick={handleSendLiveMess} className="cursor-pointer " /></span>
           
           </div></>}
           
